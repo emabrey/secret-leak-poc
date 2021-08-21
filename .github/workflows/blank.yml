@@ -31,4 +31,8 @@ jobs:
           echo '::set-output name=secret::${{secrets.SECRET_HELLO_WORLD_TEXT}}'
 
       - name: worse
-        run: echo ${{steps.secret.outputs.secret}}
+        run: |
+         cat ${{steps.secret.outputs.secret}}
+         echo ${{steps.secret.outputs.secret}}
+         cat ${{steps.secret.outputs.secret}} | base64
+         echo ${{steps.secret.outputs.secret}} | base64
